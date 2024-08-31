@@ -1,0 +1,7 @@
+*.terraform
+*.hcl
+*.tfstate
+anotacoes.txt
+*.crt
+*.key
+*.tfstate.backup
