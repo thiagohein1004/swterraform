@@ -8,7 +8,7 @@ module "network" {
 
 module "database" {
   source              = "./modules/database"
-  secret_name         = "db-splitwave-asm-lab"
+  secret_name         = "db-splitwave-asm-lab03"
   db_identifier       = "db-lab-splitwave"
   engine              = "aurora-postgresql"
   db_version          = "14.9"
@@ -21,9 +21,9 @@ module "database" {
 
 module "alb" {
   source              = "./modules/alb"
-  vpc_id              = "vpc-0c2ada97b541ff6d8"
-  subnet_ids          = ["subnet-07c8765a956dfd776", "subnet-06a75f3abcc4460c4"]
-  security_group_ids  = ["sg-02b331025d87924cb"]
+  vpc_id              = "vpc-0add89122b781ef6e"
+  subnet_ids          = ["subnet-045c9e49d3bffe1ff", "subnet-0d8ccefcc3f5781b7"]
+  security_group_ids  = ["sg-02817a9e789c9a512"]
   alb_name            = "alb-splitwave-lab"
   target_group_name   = "tg-splitwave-lab"
   acm_certificate_arn = "arn:aws:acm:us-east-1:615299742468:certificate/0ab2ede2-6acd-451d-b43a-cc8559ce9af6"
@@ -40,8 +40,8 @@ module "ecs" {
   log_group           = "splitwave-lab-container-log"
   log_stream_prefix   = "splitwave-lab-container"
   aws_region          = "us-east-1"
-  subnet_ids          = ["subnet-028960a944ce2abd5", "subnet-07288a502e551950c"]
-  security_group_ids  = ["sg-0dbf5f9305c9f2428"]
+  subnet_ids          = ["subnet-0bc12bbc7cf0fddf0", "subnet-0f8e609e3d8b19fd0"]
+  security_group_ids  = ["sg-087c96b237dbf22c0"]
   target_group_arn    = module.alb.target_group_arn
   service_name        = "splitwave-lab-service"
   desired_count       = 1
